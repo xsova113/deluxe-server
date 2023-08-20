@@ -18,6 +18,9 @@ app.use(cors());
 
 // ROUTES
 app.post("/newsletter", newsletterRoute);
+app.get("/", (req, res) => {
+  res.send("Hello from Deluxe server!");
+});
 
 // CONNECT TO SERVER
 const PORT = process.env.PORT || 3001;
