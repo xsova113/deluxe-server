@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 // ROUTES
-app.post("/newsletter", newsletterRoute);
+app.post("/api", newsletterRoute);
 app.get("/", (req, res) => {
   res.send("Hello from Deluxe server!");
 });

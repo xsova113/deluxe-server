@@ -14,3 +14,20 @@ model Newsletter {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   email String
 }
+
+model Reservation {
+  id               String @id @default(auto()) @map("_id") @db.ObjectId
+  firstName        String
+  lastName         String
+  email            String
+  phone            String
+  address          String
+  city             String
+  province         String
+  country          String
+  checkInDate      String
+  checkOutDate     String
+  creditCardNumber String
+  creditCardType   String
+  roomId           String
+}
