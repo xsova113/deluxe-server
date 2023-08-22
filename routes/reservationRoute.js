@@ -3,7 +3,7 @@ import prisma from "../prisma/client.js";
 
 const router = express.Router();
 
-router.post("/reservation", async (req, res) => {
+router.post("/reservations", async (req, res) => {
   try {
     const { email } = await req.body;
     await prisma.newsletter.create({ data: { email: email } });
