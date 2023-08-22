@@ -5,10 +5,40 @@ const router = express.Router();
 
 router.post("/reservations", async (req, res) => {
   try {
-    const { email } = await req.body;
-    await prisma.newsletter.create({ data: { email: email } });
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      country,
+      city,
+      province,
+      checkInDate,
+      checkOutDate,
+      roomId,
+      creditCardNumber,
+      creditCardType,
+    } = await req.body;
+    await prisma.reservation.create({
+      data: {
+        firstName,
+        lastName,
+        email,
+        phone,
+        address,
+        country,
+        city,
+        province,
+        checkInDate,
+        checkOutDate,
+        roomId,
+        creditCardNumber,
+        creditCardType,
+      },
+    });
 
-    res.status(200).json({ message: "Signed up successfully" });
+    res.status(200).json({ message: "Reservation successul" });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
