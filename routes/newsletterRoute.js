@@ -6,7 +6,7 @@ const router = express.Router();
 router.post("/newsletters", async (req, res) => {
   try {
     const { email } = await req.body;
-    await prisma.newsletter.create({ data: { email: email } });
+    await prisma.newsletter.create({ data: { email } });
 
     res.status(200).json({ message: "Signed up successfully" });
   } catch (error) {
