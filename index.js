@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 // ROUTES
-app.use("/newletter", newsletterRoute);
+app.use("/newsletter", newsletterRoute);
 app.use("/reservation", reservationRoute);
 app.use("/myBooking", myBookingRoute);
 app.get("/", (req, res) => {
