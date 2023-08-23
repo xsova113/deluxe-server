@@ -7,13 +7,13 @@ router.post("/myBookings", async (req, res) => {
   try {
     const { roomId, email, lastName } = await req.body;
     if (!roomId) {
-      return res.status(404).json({ message: "No roomId found" });
+      return res.json({ message: "No roomId found" });
     }
     if (!email) {
-      return res.status(404).json({ message: "No roomId found" });
+      return res.json({ message: "No roomId found" });
     }
     if (!lastName) {
-      return res.status(404).json({ message: "No roomId found" });
+      return res.json({ message: "No roomId found" });
     }
     const response = await prisma.reservation.findMany({
       where: { roomId },
@@ -21,7 +21,7 @@ router.post("/myBookings", async (req, res) => {
 
     res.status(200).json(response);
   } catch (error) {
-    res.status(404).json({ error });
+    res.status(500).json({ error });
   }
 });
 
