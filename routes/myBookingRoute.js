@@ -21,7 +21,7 @@ router.post("/myBookings", async (req, res) => {
 
     res.status(200).json(response);
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({ msg: "INTERNAL SERVER ERROR" });
   }
 });
 
