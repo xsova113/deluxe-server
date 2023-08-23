@@ -5,7 +5,16 @@ const router = express.Router();
 
 router.post("/myBookings", async (req, res) => {
   try {
-    const { roomId } = await req.body;
+    const { roomId, email, lastName } = await req.body;
+    if (!roomId) {
+      return res.status(404).json({ message: "No roomId found" });
+    }
+    if (!email) {
+      return res.status(404).json({ message: "No roomId found" });
+    }
+    if (!lastName) {
+      return res.status(404).json({ message: "No roomId found" });
+    }
     const response = await prisma.reservation.findMany({
       where: { roomId },
     });
