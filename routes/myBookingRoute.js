@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.post("/myBookings", async (req, res) => {
   try {
-    const { id, lastName, email } = await req.body;
-    const response = await prisma.reservation.findUnique({
-      where: { id: id, lastName: lastName, email: email },
+    const { roomId, lastName, email } = await req.body;
+    const response = await prisma.reservation.find({
+      where: { roomId, lastName, email },
     });
 
     res.status(200).json(response);
