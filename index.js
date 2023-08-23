@@ -19,9 +19,9 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 // ROUTES
-app.use("/", newsletterRoute);
-app.use("/", reservationRoute);
-app.use("/", myBookingRoute);
+app.use("/newletter", newsletterRoute);
+app.use("/reservation", reservationRoute);
+app.use("/myBooking", myBookingRoute);
 app.get("/", (req, res) => {
   res.send("Hello from Deluxe server!");
 });
