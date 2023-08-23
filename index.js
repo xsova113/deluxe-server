@@ -6,6 +6,7 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import newsletterRoute from "./routes/newsletterRoute.js";
 import reservationRoute from "./routes/reservationRoute.js";
+import myBookingRoute from "./routes/myBookingRoute.js";
 
 // CONFIGURATION
 dotenv.config();
@@ -18,8 +19,9 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 // ROUTES
-app.use("/newsletter", newsletterRoute);
-app.use("/reservation", reservationRoute);
+app.use("/", newsletterRoute);
+app.use("/", reservationRoute);
+app.use("/", myBookingRoute);
 app.get("/", (req, res) => {
   res.send("Hello from Deluxe server!");
 });
