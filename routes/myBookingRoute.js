@@ -3,25 +3,21 @@ import prisma from "../prisma/client.js";
 
 const router = express.Router();
 
-router.post("/myBookings", async (req, res) => {
+router.get("/myBookings/:roomId", async (req, res) => {
   try {
-    const { roomId, email, lastName } = await req.body;
+    const roomId = req.params.roomId;
+
     if (!roomId) {
-      return res.json({ message: "No roomId found" });
+      return res.json({ message: "No room Id found" });
     }
-    if (!email) {
-      return res.json({ message: "No roomId found" });
-    }
-    if (!lastName) {
-      return res.json({ message: "No roomId found" });
-    }
-    const response = await prisma.reservation.findMany({
+
+    const reservations = await prisma.reservation.findMany({
       where: { roomId },
     });
 
-    res.status(200).json(response);
+    res.status(200).json(reservations);
   } catch (error) {
-    res.status(500).json({ msg: "INTERNAL SERVER ERROR" });
+    res.status(500).json({ message: "INTERNAL ERROR" });
   }
 });
 

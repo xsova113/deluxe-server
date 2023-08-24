@@ -6,6 +6,9 @@ const router = express.Router();
 router.post("/reservations", async (req, res) => {
   try {
     const {
+      roomId,
+      checkInDate,
+      checkOutDate,
       firstName,
       lastName,
       email,
@@ -14,13 +17,11 @@ router.post("/reservations", async (req, res) => {
       country,
       city,
       province,
-      postalCode,
-      checkInDate,
-      checkOutDate,
-      roomId,
       creditCardNumber,
       creditCardType,
-    } = await req.body;
+      postalCode,
+    } = req.body;
+
     await prisma.reservation.create({
       data: {
         firstName,
@@ -40,9 +41,9 @@ router.post("/reservations", async (req, res) => {
       },
     });
 
-    res.status(200).json({ message: "Reservation successul" });
+    res.status(200).json({ message: "Reservation successfully created" });
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
