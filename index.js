@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import newsletterRoute from "./routes/newsletterRoute.js";
 import reservationRoute from "./routes/reservationRoute.js";
 import myBookingRoute from "./routes/myBookingRoute.js";
+import serverless from "serverless-http";
 
 // CONFIGURATION
 dotenv.config();
@@ -28,6 +29,8 @@ app.get("/", (req, res) => {
 });
 
 // CONNECT TO SERVER
+export const handler = serverless(app)
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log("Server listening on port " + PORT);

@@ -3,6 +3,16 @@ import prisma from "../prisma/client.js";
 
 const router = express.Router();
 
+router.get("/myBookings", async (_req, res) => {
+  try {
+    const reservations = await prisma.reservation.findMany();
+
+    res.status(200).json(reservations);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 router.get("/myBookings/:roomId", async (req, res) => {
   try {
     const roomId = req.params.roomId;
@@ -17,7 +27,7 @@ router.get("/myBookings/:roomId", async (req, res) => {
 
     res.status(200).json(reservations);
   } catch (error) {
-    res.status(500).json({ message: "INTERNAL ERROR" });
+    res.status(500).json({ message: error.message });
   }
 });
 
